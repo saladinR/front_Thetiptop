@@ -19,10 +19,4 @@ pipeline {
         }
     }
     
-
-    post {
-        always {
-            // Clean up any Docker images or containers here if needed
-        }
-    }
 }
