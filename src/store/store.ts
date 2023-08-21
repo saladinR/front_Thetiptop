@@ -29,7 +29,7 @@ export const useStore = defineStore({
         async login(loginData: any) {
             this.isLoading = true
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/login_check', loginData);
+                const response = await axios.post('http://dsp-archiwebbo21a-sr.fr/api/login_check', loginData);
                 console.log("my data response",response.data.user,response.data.token);
                 if (response.data.toString()) {
                     //console.log("connect ruessi",this.isConnected )
@@ -50,7 +50,7 @@ export const useStore = defineStore({
             console.log(data)
             this.isLoading = true
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/tirage/valide', data);
+                const response = await axios.post('http://dsp-archiwebbo21a-sr.fr/tirage/valide', data);
                 console.log(response);
                 if (response.data) {
                     this.responseOfticket=response.data
@@ -64,7 +64,7 @@ export const useStore = defineStore({
             console.log(data)
             this.isLoading = true
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/tirage/history\n', data);
+                const response = await axios.post('http://dsp-archiwebbo21a-sr.fr/api/tirage/history\n', data);
                 console.log(response);
                 if (response.data) {
                     this.historyList=response.data
