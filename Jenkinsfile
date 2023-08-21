@@ -14,11 +14,11 @@ pipeline {
             steps {
                 script {
                     sh 'docker build -t test .'
-                    }
                 }
             }
         }
     }
+    
 
     post {
         always {
@@ -26,5 +26,3 @@ pipeline {
         }
     }
 }
-
-
