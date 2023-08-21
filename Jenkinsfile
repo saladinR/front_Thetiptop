@@ -35,11 +35,8 @@ pipeline {
     }
 }
 
-credentials {
-    usernamePassword(
-        credentialsId: 'dockerhub-credentials',
-        usernameVariable: 'DOCKER_HUB_USERNAME',
-        passwordVariable: 'DOCKER_HUB_PASSWORD',
-        description: 'Credentials for Docker Hub'
-    )
-}
+// Define Docker Hub credentials
+def credentials(credentialsId) {
+    return [
+        $class: 'UsernamePasswordMultiBinding',
+        credentials
