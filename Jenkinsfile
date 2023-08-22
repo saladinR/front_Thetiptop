@@ -19,10 +19,10 @@ pipeline {
                 script {
                     
                     
-                    withSonarQubeEnv('SonarQubeScanner') {
+                    withSonarQubeEnv('SonarQubeScanner_front') {
                         
                         sh '''$SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectKey=back_end \
+                        -Dsonar.projectKey=frontend  \
                         -Dsonar.sources=.  '''
                     }
                 }
