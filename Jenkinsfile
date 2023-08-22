@@ -23,8 +23,7 @@ pipeline {
                         
                         sh '''$SCANNER_HOME/bin/sonar-scanner \
                         -Dsonar.projectKey=back_end \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=http://217.160.8.74:9000  '''
+                        -Dsonar.sources=.  '''
                     }
                 }
             }
