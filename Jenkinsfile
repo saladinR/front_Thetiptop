@@ -15,27 +15,7 @@ pipeline {
             }
         }
         
-        stage('Increment Version') {
-            steps {
-                script {
-                    def versionFile = 'version.txt'
-                    def currentVersion = readFile(versionFile).trim()
-                    def versionParts = currentVersion.split('\\.').collect { it.toInteger() }
-
-                    versionParts[2]++ // Increment patch version
-
-                    def newVersion = versionParts.join('.')
-                    writeFile file: versionFile, text: newVersion
-
-                    env.IMAGE_NAME = "${newVersion}-${BUILD_NUMBER}"
-
-                    echo "Incremented version: ${currentVersion} -> ${newVersion}"
-                    echo "Image name: ${env.IMAGE_NAME}"
-                    
-                   
-                }
-            }
-        }
+        
         stage('SonarQube Analysis') {
             steps {
                 script {
@@ -74,26 +54,8 @@ pipeline {
                 }
             }
         }
-        stage('commit version update') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'ac25fe93-723a-428a-91eb-09c31b40fb96', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                        // git config here for the first time run
-                        sh 'git config --global user.email "salaheddine.raiss@gmail.com"'
-                        
-
-                        sh "git clone  https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git || echo 0"
-                        sh "cd front_Thetiptop"
-                        sh 'git config --global user.name "saladinR"'
-                        sh "git checkout -b main"
-                        sh "echo ${env.IMAGE_NAME} > version.txt"
-                        sh 'git add version.txt'
-                        sh 'git commit -m "ci: version bump"'
-                        sh 'git push origin main'
-                    }
-                }
-            }
-        }
+          
+        
         
     }
     post {
@@ -106,24 +68,6 @@ pipeline {
 
 
 
-        // stage('Run Tests with SonarQube') {
-        //     steps {
-        //         script {
-        //             // Run your tests and generate the necessary reports
-                    
-        //             // Configure SonarQube analysis
-        //             def scannerHome = tool 'sonar_test' // Make sure you have the SonarScanner tool configured in Jenkins
-                    
-        //             withSonarQubeEnv('SonarQube') {
-        //                 sh "${scannerHome}/bin/sonar-scanner \
-        //                     -Dsonar.projectKey=backend \
-        //                     -Dsonar.sources=. \
-        //                     -Dsonar.host.url=http://217.160.8.74:9000 \
-        //                     -Dsonar.token=sqp_0e2f29539e7cfa3ca642fd741351773b7cf4aaf3"
-        //             }
-        //         }
-        //     }
-        // }
-    
+        
     
 }
