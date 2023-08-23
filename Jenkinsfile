@@ -32,11 +32,7 @@ pipeline {
                     echo "Incremented version: ${currentVersion} -> ${newVersion}"
                     echo "Image name: ${env.IMAGE_NAME}"
 
-                    // Add and commit the updated version file
-                    sh "git config --global user.email 'jenkins@example.com'"
-                    sh "git config --global user.name 'Jenkins CI'"
-                    sh "git add ${versionFile}"
-                    sh "git commit -m 'Increment version to ${newVersion}'"
+                   
                 }
             }
         }
@@ -78,6 +74,23 @@ pipeline {
                 }
             }
         }
+        stage('commit version update') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                        // git config here for the first time run
+                        sh 'git config --global user.email "jenkins@example.com"'
+                        sh 'git config --global user.name "jenkins"'
+
+                        sh "git remote set-url origin https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
+                        sh 'git add .'
+                        sh 'git commit -m "ci: version bump"'
+                        sh 'git push '
+                    }
+                }
+            }
+        }
+
 
 
 
