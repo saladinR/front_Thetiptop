@@ -77,13 +77,12 @@ pipeline {
         stage('commit version update') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                    withCredentials([usernamePassword(credentialsId: 'ac25fe93-723a-428a-91eb-09c31b40fb96', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                         // git config here for the first time run
                         sh 'git config --global user.email "jenkins@example.com"'
                         sh 'git config --global user.name "jenkins"'
 
-                        sh "git clone https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
-                        
+                        sh "git clone origin https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
                         sh "cd /front_Thetiptop"
                         sh "echo ${env.IMAGE_NAME} > version.txt"
                         sh 'git add version.txt'
