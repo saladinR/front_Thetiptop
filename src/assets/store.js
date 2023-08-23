@@ -6,7 +6,7 @@ export const useStore = defineStore({
     state() {
         return {
             // Your state properties here
-        };
+        }
     },
     getters: {
         // Your getters here

@@ -3,17 +3,27 @@
   <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
       <!-- Marque de la navbar -->
-      <a class="navbar-brand" href="#">Mon Site</a>
-
+      <a class="navbar-brand" href="/">
+        <img src="@/assets/image.png" alt="Logo" style="width: 110px; height: 70px;">
+      </a>
       <!-- Boutons dans la navbar -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="Home">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="Historique">Historique</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Déconnexion</a>
-
+            <a class="nav-link" href="Historique">Qui somme-nous</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login" @click="deconnecter()">Déconnexion</a>
           </li>
         </ul>
       </div>
@@ -23,7 +33,7 @@
   <div class="input-container">
     <!-- Champ de saisie centré -->
     <div class="text-center">
-      <input type="text" class="form-control" v-model="ticket" placeholder="Entrez votre key...">
+      <input type="text" class="form-control" style="    margin-bottom: 23px;" v-model="ticket" placeholder="Entrez votre key...">
       <!-- Bouton d'envoi -->
       <button class="btn btn-primary mt-3 custom-button"  type="button"
               @click="tirage()"
@@ -40,18 +50,25 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="congratulationsModalLabel">Cadeau Spécial !</h5>
+          <h5 class="modal-title" id="congratulationsModalLabel">Découvrir votre adeau Spécial !</h5>
           <button  type="button" class="btn btn-secondary close" data-bs-dismiss="modal">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
-        <div class="spinner-border" role="status" v-if="store.$state.isLoading">
-          <span class="sr-only"></span>
+        <div v-if="ticket==''" style="height: 100px;margin-top: 100px">
+Saisir une ticket
         </div>
+        <div v-else>
+<div v-if="store.isLoading">
+  <div class="spinner-border" role="status" >
+    <span class="sr-only"></span>
+  </div>
+</div>
+
         <div class="modal-body" v-else>
           <div v-if="'Ticket invalide ou déjà utilisé.'==store.responseOfticket">
-            <img src="https://www.shutterstock.com/shutterstock/photos/1398672683/display_1500/stock-vector-sad-and-apologizing-emoticon-emoji-holding-a-sign-with-the-text-sorry-1398672683.jpg" class="popup-image" alt="Cadeau">
+            <img src="https://www.wishesquotes.com/wp-content/uploads/2022/09/Hamster-Balloon-Sorry.jpg" class="popup-image" alt="Cadeau">
             <p class="mt-3">{{store.$state.responseOfticket}}</p>
             <!--         < https://i.pinimg.com/474x/61/8c/43/618c43b526ede35ee79532af6dc06001.jp>g-->
           </div>
@@ -66,6 +83,7 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
+    </div>
     </div>
   </div>
   <!-- Inclure les scripts Bootstrap JS (facultatif) -->
@@ -92,12 +110,15 @@ async function tirage() {
   }
   await store.tirage({numero: ticket.value, idUser: id})
   console.log("this.responseOfticket", store.responseOfticket)
+}
 
+function deconnecter(){
+  localStorage.removeItem('user');
 }
 </script>
 <style scoped>
 .bodyclasse {
-  background-image: url('https://thumbs.dreamstime.com/b/summer-sunny-forest-trees-green-grass-nature-wood-sunlight-background-instant-toned-image-53353502.jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
+  background-image: url('../assets/back_home.jpg');
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,6 +131,8 @@ async function tirage() {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  height: 157px;
 }
 /* Personnaliser le bouton */
 .custom-button {
@@ -123,11 +146,11 @@ async function tirage() {
 }
 
 .navbar-custom {
-  background-color: #333;
+  background-color: #ffffff;
 }
 /* Personnaliser la couleur du texte dans la navbar */
 .navbar-custom .navbar-nav .nav-link {
-  color: white;
+  color: rgb(13, 66, 34);
 }
 
 .modal-content {
