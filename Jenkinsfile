@@ -90,13 +90,14 @@ pipeline {
                 }
             }
         }
-        post {
+        
+    }
+    post {
             always {
             // Clean up after the pipeline finishes
                 deleteDir()
             }
         }
-    }
 
 
 
@@ -119,6 +120,6 @@ pipeline {
         //         }
         //     }
         // }
-    }
+    
     
 }
