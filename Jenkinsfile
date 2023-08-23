@@ -31,11 +31,7 @@ pipeline {
 
                     echo "Incremented version: ${currentVersion} -> ${newVersion}"
                     echo "Image name: ${env.IMAGE_NAME}"
-                    sh "git config --global user.email 'jenkins@example.com'"
-                    sh "git config --global user.name 'Jenkins CI'"
-                    sh "git add ${versionFile}"
-                    sh "git commit -m 'Increment version to ${newVersion}'"
-                    sh "git push origin HEAD:main"
+                    
                    
                 }
             }
@@ -78,25 +74,25 @@ pipeline {
                 }
             }
         }
-        // stage('commit version update') {
-        //     steps {
-        //         script {
-        //             withCredentials([usernamePassword(credentialsId: 'ac25fe93-723a-428a-91eb-09c31b40fb96', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        //                 // git config here for the first time run
-        //                 sh 'git config --global user.email "jenkins@example.com"'
-        //                 sh 'git config --global user.name "jenkins"'
+        stage('commit version update') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'ac25fe93-723a-428a-91eb-09c31b40fb96', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                        // git config here for the first time run
+                        sh 'git config --global user.email "salaheddine.raiss@gmail.com"'
+                        sh 'git config --global user.name "saladinR"'
 
-        //                 sh "git clone  https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git || echo 0"
-        //                 sh "cd front_Thetiptop"
-        //                 sh "git checkout -b main"
-        //                 sh "echo ${env.IMAGE_NAME} > version.txt"
-        //                 sh 'git add version.txt'
-        //                 sh 'git commit -m "ci: version bump"'
-        //                 sh 'git push origin main'
-        //             }
-        //         }
-        //     }
-        // }
+                        sh "git clone  https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git || echo 0"
+                        sh "cd front_Thetiptop"
+                        sh "git checkout -b main"
+                        sh "echo ${env.IMAGE_NAME} > version.txt"
+                        sh 'git add version.txt'
+                        sh 'git commit -m "ci: version bump"'
+                        sh 'git push origin main'
+                    }
+                }
+            }
+        }
         
     }
     post {
