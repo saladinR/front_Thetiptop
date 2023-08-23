@@ -82,8 +82,8 @@ pipeline {
                         sh 'git config --global user.email "jenkins@example.com"'
                         sh 'git config --global user.name "jenkins"'
 
-                        sh "git clone  https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
-                        sh "cd /front_Thetiptop"
+                        sh "git clone  https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git || echo 0"
+                        sh "cd front_Thetiptop"
                         sh "echo ${env.IMAGE_NAME} > version.txt"
                         sh 'git add version.txt'
                         sh 'git commit -m "ci: version bump"'
