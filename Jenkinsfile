@@ -83,9 +83,9 @@ pipeline {
                         sh 'git config --global user.name "jenkins"'
 
                         sh "git remote set-url origin https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
-                        // sh "git clone https://github.com/saladinR/front_Thetiptop.git"
-                        // sh "cd /front_Thetiptop"
-                        // sh "echo ${env.IMAGE_NAME} > version.txt"
+                        sh "git clone https://github.com/saladinR/front_Thetiptop.git"
+                        sh "cd /front_Thetiptop"
+                        sh "echo ${env.IMAGE_NAME} > version.txt"
                         sh 'git add version.txt'
                         sh 'git commit -m "ci: version bump"'
                         sh 'git push origin main'
