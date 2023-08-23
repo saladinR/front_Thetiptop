@@ -14,7 +14,7 @@ pipeline {
                 checkout scm
             }
         }
-        stages {
+        
         stage('Increment Version') {
             steps {
                 script {
