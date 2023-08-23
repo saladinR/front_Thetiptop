@@ -84,6 +84,7 @@ pipeline {
 
                         sh "git clone  https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git || echo 0"
                         sh "cd front_Thetiptop"
+                        sh "git checkout -b main"
                         sh "echo ${env.IMAGE_NAME} > version.txt"
                         sh 'git add version.txt'
                         sh 'git commit -m "ci: version bump"'
