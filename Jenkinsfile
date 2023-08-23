@@ -82,7 +82,7 @@ pipeline {
                         sh 'git config --global user.email "jenkins@example.com"'
                         sh 'git config --global user.name "jenkins"'
 
-                        sh "git remote set-url  https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
+                        sh "git remote set-url origin https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
                         sh 'git add version.txt'
                         sh 'git commit -m "ci: version bump"'
                         sh 'git push origin main'
