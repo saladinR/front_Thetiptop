@@ -85,7 +85,7 @@ pipeline {
                         sh "git remote set-url origin https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
                         sh 'git add version.txt'
                         sh 'git commit -m "ci: version bump"'
-                        sh 'git push HEAD:main'
+                        sh 'git push origin main'
                     }
                 }
             }
