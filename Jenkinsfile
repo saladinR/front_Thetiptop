@@ -35,7 +35,7 @@ pipeline {
                     sh "git config --global user.name 'Jenkins CI'"
                     sh "git add ${versionFile}"
                     sh "git commit -m 'Increment version to ${newVersion}'"
-                    sh "git push"
+                    sh "git push origin HEAD:main"
                    
                 }
             }
