@@ -83,9 +83,9 @@ pipeline {
                         sh 'git config --global user.name "jenkins"'
 
                         sh "git remote set-url origin https://${USER}:${PASS}@github.com/saladinR/front_Thetiptop.git"
-                        sh 'git add .'
+                        sh 'git add version.txt'
                         sh 'git commit -m "ci: version bump"'
-                        sh 'git push '
+                        sh 'git push HEAD:main'
                     }
                 }
             }
