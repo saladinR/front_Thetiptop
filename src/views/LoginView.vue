@@ -10,10 +10,10 @@
       <h2>Connexion</h2>
       <span v-if="!formaemail" style="color: red;font-size: 15px;">saisir un corect email et un mot de pase</span>
 
-      <input type="text" placeholder="Nom d'utilisateur" id="#usernameInput" v-model="data.email">
-      <input type="password" placeholder="Mot de passe" id="#passwordInput" v-model="data.password">
+      <input type="text" placeholder="Nom d'utilisateur" id="usernameInput" v-model="data.email">
+      <input type="password" placeholder="Mot de passe" id="passwordInput" v-model="data.password">
       <span v-if="emailincorect" style="color: red">email ou mot de passe incorrce</span>
-      <button @click="connecte" :disabled="store.$state.isLoading" id="#loginButton">Se connecter
+      <button @click="connecte" :disabled="store.$state.isLoading" id="loginButton">Se connecter
         <div class="spinner-border" role="status" v-if="store.$state.isLoading">
           <span class="sr-only"></span>
         </div>
