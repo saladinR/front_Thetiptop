@@ -10,7 +10,7 @@ pipeline {
                 checkout scm
             }
         }
-
+        
         stage('SonarQube Analysis') {
             steps {
                 script {
@@ -50,12 +50,12 @@ pipeline {
         stage('Selenium Tests') {
             steps {
                 script {
-                    // Here we are assuming that selenium_test.py and requirements.txt are already available in the current workspace
                     echo "Running Selenium tests inside Selenium container..."
-
                     sh '''
                     docker run --net=host -v $(pwd):/workspace -w /workspace selenium/standalone-chrome:latest bash -c "
-                        pip install -r requirements.txt && 
+                        apt-get update &&
+                        apt-get install -y python3-pip &&
+                        pip3 install -r requirements.txt && 
                         python3 selenium_test.py"
                     '''
                 }
