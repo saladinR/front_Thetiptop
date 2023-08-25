@@ -11,6 +11,16 @@ pipeline {
             }
         }
         
+        stage('Setup Python Environment') {
+            steps {
+                script {
+                    echo "Setting up Python environment..."
+                    sh 'sudo apt-get update'
+                    sh 'sudo apt-get install -y python3-pip'
+                }
+            }
+        }
+        
         stage('SonarQube Analysis') {
             steps {
                 script {
@@ -22,7 +32,7 @@ pipeline {
                 }
             }
         }
-
+    
         stage('build image') {
             steps {
                 script {
@@ -35,7 +45,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('deploy image') {
             steps {
                 script {
@@ -51,11 +61,11 @@ pipeline {
             steps {
                 script {
                     echo "Running Selenium tests..."
-                    sh 'pip3 install -r requirements.txt' // Utilisation de pip3 pour l'installation des dépendances
-                    sh 'python selenium_test.py'
+                    sh 'pip3 install -r requirements.txt'
+                    sh 'python3 selenium_test.py'
                 }
             }
-        }      
+        }
     }
     
     post {
