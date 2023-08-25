@@ -15,8 +15,8 @@ pipeline {
             steps {
                 script {
                     echo "Setting up Python environment..."
-                    sh 'sudo apt-get update'
-                    sh 'sudo apt-get install -y python3-pip'
+                    sh 'apt-get update'
+                    sh 'apt-get install -y python3-pip'
                 }
             }
         }
