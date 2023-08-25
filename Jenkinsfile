@@ -54,10 +54,25 @@ pipeline {
                 }
             }
         }
+
+        stage('Selenium Tests') {
+            steps {
+                script {
+                    echo "Running Selenium tests..."
+                    sh 'pip install -r requirements.txt' // Assurez-vous d'avoir un fichier requirements.txt s'il y a des dépendances.
+                    sh 'python selenium_test.py'
+                    }
+                }
+            }
+        }
+        
+
+
           
         
         
     }
+    
     post {
             always {
             // Clean up after the pipeline finishes
