@@ -1,4 +1,4 @@
-# frontapi2
+# frontapi
 
 ## Project setup
 ```
