@@ -54,6 +54,16 @@ pipeline {
                 }
             }
         }
+        stage('selenuim') {
+            steps {
+                script {
+                    echo "building the docker image..."
+                    sshagent(['ssh-instance']) {                
+                        sh "ssh -o StrictHostKeyChecking=no root@217.160.8.74 'python3 selenium_test.py  ' "   
+                    }
+                }
+            }
+        }
           
         
         
