@@ -52,7 +52,7 @@ pipeline {
                 script {
                     echo "Running Selenium tests inside Selenium container..."
                     sh '''
-                    docker run --net=host -v $(pwd):/workspace -w /workspace selenium/standalone-chrome:latest bash -c "
+                    docker run --net=host --user root -v $(pwd):/workspace -w /workspace selenium/standalone-chrome:latest bash -c "
                         apt-get update &&
                         apt-get install -y python3-pip &&
                         pip3 install -r requirements.txt && 
