@@ -11,7 +11,7 @@ pipeline {
             }
         }
         
-        stage('SonarQube Analysis') {
+        stage('Analyse SonarQube') {
             steps {
                 script {
                     withSonarQubeEnv('SonarQubeScanner_front') {
@@ -22,11 +22,11 @@ pipeline {
                 }
             }
         }
-    
-        stage('build image') {
+
+        stage('Construire l\'image') {
             steps {
                 script {
-                    echo "building the docker image..."
+                    echo "Construction de l'image Docker..."
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                         sh "docker build -t salaheddineraiss/front_end ."
                         sh "echo $PASS | docker login -u $USER --password-stdin"
@@ -36,10 +36,10 @@ pipeline {
             }
         }
 
-        stage('deploy image') {
+        stage('Déployer l\'image') {
             steps {
                 script {
-                    echo "deploying the docker image..."
+                    echo "Déploiement de l'image Docker..."
                     sshagent(['ssh-instance']) {                
                         sh "ssh -o StrictHostKeyChecking=no root@217.160.8.74 'docker-compose up -d' "   
                     }
@@ -47,16 +47,12 @@ pipeline {
             }
         }
 
-        stage('Selenium Tests') {
+        stage('Tests Selenium') {
             steps {
                 script {
-                    echo "Running Selenium tests inside Selenium container..."
+                    echo "Exécution des tests Selenium dans le conteneur Selenium..."
                     sh '''
-                    docker run --net=host --user root -v $(pwd):/workspace -w /workspace selenium/standalone-chrome:latest bash -c "
-                        apt-get update &&
-                        apt-get install -y python3-pip &&
-                        pip3 install -r requirements.txt && 
-                        python3 selenium_test.py"
+                        docker run --net=host -v $(pwd):/workspace -w /workspace selenium/standalone-chrome:latest python3 selenium_test.py
                     '''
                 }
             }
@@ -65,7 +61,7 @@ pipeline {
     
     post {
         always {
-            // Clean up after the pipeline finishes
+            // Nettoyer après la fin du pipeline
             deleteDir()
         }
     }
