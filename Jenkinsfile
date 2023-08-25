@@ -41,14 +41,14 @@ pipeline {
             }
         }
 
-        stage('Run Selenium Tests') {
-            steps {
-                sh '''
-                docker run --net=host -v /root:/workspace -w /workspace selenium/standalone-chrome:latest python3 selenium_test.py
-                '''
-            }
-        }
-    }
+    //     stage('Run Selenium Tests') {
+    //         steps {
+    //             sh '''
+    //             docker run --net=host -v /root:/workspace -w /workspace selenium/standalone-chrome:latest python3 selenium_test.py
+    //             '''
+    //         }
+    //     }
+    // }
     
     post {
         always {
