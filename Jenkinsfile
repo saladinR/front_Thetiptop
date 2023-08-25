@@ -3,10 +3,6 @@ pipeline {
     environment {
         SCANNER_HOME = tool 'sonar_test'
     }
-    
-
-
-    
 
     stages {
         stage('Checkout') {
@@ -15,14 +11,10 @@ pipeline {
             }
         }
         
-        
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    
-                    
                     withSonarQubeEnv('SonarQubeScanner_front') {
-                        
                         sh '''$SCANNER_HOME/bin/sonar-scanner \
                         -Dsonar.projectKey=frontend  \
                         -Dsonar.sources=.  '''
@@ -30,7 +22,6 @@ pipeline {
                 }
             }
         }
-    
 
         stage('build image') {
             steps {
@@ -44,10 +35,11 @@ pipeline {
                 }
             }
         }
+        
         stage('deploy image') {
             steps {
                 script {
-                    echo "building the docker image..."
+                    echo "deploying the docker image..."
                     sshagent(['ssh-instance']) {                
                         sh "ssh -o StrictHostKeyChecking=no root@217.160.8.74 'docker-compose up -d' "   
                     }
@@ -61,28 +53,15 @@ pipeline {
                     echo "Running Selenium tests..."
                     sh 'pip install -r requirements.txt' // Assurez-vous d'avoir un fichier requirements.txt s'il y a des dépendances.
                     sh 'python selenium_test.py'
-                    }
                 }
             }
-        }
-        
-
-
-          
-        
-        
+        }      
     }
     
     post {
-            always {
+        always {
             // Clean up after the pipeline finishes
-                deleteDir()
-            }
+            deleteDir()
         }
-
-
-
-
-        
-    
+    }
 }
