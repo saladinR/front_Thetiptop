@@ -8,11 +8,11 @@
            alt="Logo" style="width: 200px; height: ">
       <h2>Connexion</h2>
       <span v-if="!formaemail" style="color: red;font-size: 15px;">saisir un corect email et un mot de passe</span>
-      <input type="text" placeholder="Nom d'utilisateur" v-model="data.email">
-      <input type="password" placeholder="Mot de passe" v-model="data.password">
+      <input type="text" placeholder="Nom d'utilisateur" v-model="data.email" id="usernameInput">
+      <input type="password" placeholder="Mot de passe" v-model="data.password" id="passwordInput">
       <span v-if="emailincorect" style="color: red">email ou mot de passe incorrce</span>
       <button @click="connecte" :disabled="store.$state.isLoading" class="facebook-button" style="background-color: #42b983 !important;">
-        <span style="padding-left: 80px ;color: white"> Se connecter</span>
+        <span style="padding-left: 80px ;color: white" id="loginButton"> Se connecter</span>
         <div class="spinner-border" role="status" v-if="store.$state.isLoading">
           <span class="sr-only"></span>
         </div>
