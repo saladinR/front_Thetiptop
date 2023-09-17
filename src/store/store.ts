@@ -9,6 +9,7 @@ interface State {
     isConnected: boolean,
     historyList:[],
     responseOfticket: string,
+    isModalVisible:boolean,
 }
 
 export const useStore = defineStore({
@@ -18,7 +19,8 @@ export const useStore = defineStore({
         responseOfticket: '',
         historyList:[],
         isLoading: false,
-        isConnected: false
+        isConnected: false,
+        isModalVisible:false
     }),
     getters: {
         // Your getters here

@@ -1,7 +1,42 @@
 <template>
   <body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="@/assets/imageP.png" alt="Logo" style="width: 110px; height: 70px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Historique">Historique</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="propos">Qui somme nous</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contactNous">Contacter nous</a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/login" @click="deconnecter()">Déconnexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Profil">
+              <img class="profile-image" style="width: 40px;height: 40px;    margin-top: -10px;" src="https://previews.123rf.com/images/mialima/mialima1603/mialima160300025/55096766-ic%C3%B4ne-d-utilisateur-homme-isol%C3%A9-sur-un-fond-blanc-compte-avatar-pour-le-web-utilisateur-photo-de.jpg" alt="Photo de profil">
+            </a>
+          </li>
 
+        </ul>
+      </div>
+    </div>
+  </nav>
   <div class="container">
     <div class="logo">
       <img src="@/assets/image.png" alt="Logo"> <!-- Replace with your logo image -->
@@ -22,6 +57,9 @@
 </template>
 
 <script setup lang="ts">
+function deconnecter(){
+  localStorage.removeItem('user');
+}
 </script>
 
 <style scoped>

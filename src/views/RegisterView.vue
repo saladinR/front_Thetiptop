@@ -37,14 +37,20 @@ px
     </div>
 
   </div>
+
 </template>
 
 <script setup lang="ts">
 import {reactive, ref} from "vue";
 import {useStore} from "@/store/store";
-import {email, required} from "@vuelidate/validators/dist";
+import {email, required} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
 import router from "@/router";
+import ModalTest from "@/components/ModalTest.vue";
+
+const isModalVisible = ref<boolean>(false);
+
+
 const store = useStore(); // Utilisez la fonction useStore pour obtenir l'instance du store
 let passworderropr=ref(false)
 const data = reactive({
@@ -65,6 +71,10 @@ let emailincorect=ref(false)
 function testformul(){
   emailincorect.value = false
 }
+
+function openModal() {
+  store.isModalVisible = true;
+}
 async function register() {
   passworderropr.value=false
   console.log(data, store.message)
@@ -83,6 +93,7 @@ if(data.password==data.confirmPassword) {
   if (store.$state.isConnected) {
     console.log("push ver home")
     router.push('home')
+    openModal()
     emailincorect.value = false
   } else
     emailincorect.value = true
@@ -99,7 +110,7 @@ else   passworderropr.value = true
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url(''); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
+  background-image: url('https://wallpaperaccess.com/full/51367.jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
 
 
 }

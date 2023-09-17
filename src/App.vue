@@ -23,4 +23,12 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+}
+
 </style>

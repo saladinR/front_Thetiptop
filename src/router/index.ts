@@ -10,7 +10,13 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     name: 'home',
     component: HomeView
-  },{
+  },
+  {
+    path: '/',
+    name: 't',
+    component: HomeView
+  }
+  ,{
     path: '/propos',
     name: 'propos',
     component: StaticPageView
@@ -21,11 +27,6 @@ const routes: Array<RouteRecordRaw> = [
     component: RegisterView
   },
   {
-    path: '',
-    name: 'home2',
-    component: HomeView
-  },
-  {
     path: '/historique',
     name: 'historique',
     component: HiostoriqueView
@@ -34,6 +35,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
+  },
+  {
+    path: '/Profil',
+    name: 'profil',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProfilView.vue')
+  },
+  {
+    path: '/contactNous',
+    name: 'contact',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ContactHistoriqueView.vue')
   },
   {
     path: '/:catchAll(.*)',
@@ -47,20 +58,19 @@ const router = createRouter({
   routes
 })
 function authMiddleware(to:any, from:any, next:any) {
-  console.log(localStorage.getItem('user'),to.path)
   const isAuthenticated = localStorage.getItem('user');
-  if (isAuthenticated==null && to.path!="/login" && to.path!="/register" && to.path!="/propos") {
-    next('/login'); // Remplacez '/login' par le chemin de votre page de connexion
+  //alert(isAuthenticated==null)
+  if(to.path=="/login" && isAuthenticated!=null) {
+    next('/home');
+    return;
+  }
+  if (isAuthenticated==null &&
+      to.path!="/login" &&
+      to.path!="/register"
+      && to.path!="/propos" && to.path!="/contactNous") {
+    next('/login');
   } else {
-    // if (to.path=="/login")
-    //   next('/home');
-    // else
       next()
-    // else
-    // if (!to.matched.length)
-    //   next('/not-found');
-    // else
-    //   next();
   }
 }
 router.beforeEach(authMiddleware);

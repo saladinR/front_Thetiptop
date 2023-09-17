@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <!-- Marque de la navbar -->
       <a class="navbar-brand" href="/">
-        <img src="@/assets/image.png" alt="Logo" style="width: 110px; height: 70px;">
+        <img src="@/assets/imageP.png" alt="Logo" style="width: 110px; height: 70px;">
       </a>
       <!-- Boutons dans la navbar -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -20,10 +20,19 @@
             <a class="nav-link" href="Historique">Historique</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Historique">Qui somme-nous</a>
+            <a class="nav-link" href="propos">Qui somme nous</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="contactNous">Contacter nous</a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="/login" @click="deconnecter()">Déconnexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Profil">
+              <img class="profile-image" style="width: 40px;height: 40px;    margin-top: -10px;" src="https://previews.123rf.com/images/mialima/mialima1603/mialima160300025/55096766-ic%C3%B4ne-d-utilisateur-homme-isol%C3%A9-sur-un-fond-blanc-compte-avatar-pour-le-web-utilisateur-photo-de.jpg" alt="Photo de profil">
+            </a>
           </li>
         </ul>
       </div>
@@ -65,12 +74,10 @@ Saisir une ticket
     <span class="sr-only"></span>
   </div>
 </div>
-
         <div class="modal-body" v-else>
           <div v-if="'Ticket invalide ou déjà utilisé.'==store.responseOfticket">
             <img src="https://www.wishesquotes.com/wp-content/uploads/2022/09/Hamster-Balloon-Sorry.jpg" class="popup-image" alt="Cadeau">
-            <p class="mt-3">{{store.$state.responseOfticket}}</p>
-            <!--         < https://i.pinimg.com/474x/61/8c/43/618c43b526ede35ee79532af6dc06001.jp>g-->
+            <p class="mt-3">{{store.$state.responseOfticket}} </p>
           </div>
           <div v-else>
             <img src=" https://i.pinimg.com/474x/61/8c/43/618c43b526ede35ee79532af6dc06001.jpg" class="popup-image" alt="Cadeau">
@@ -80,7 +87,7 @@ Saisir une ticket
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
         </div>
       </div>
     </div>
@@ -88,13 +95,35 @@ Saisir une ticket
   </div>
   <!-- Inclure les scripts Bootstrap JS (facultatif) -->
   </body>
+
+
+  <Transition>
+    <ModalTest
+        v-show="store.isModalVisible"
+        @close="closeModal"
+        class="mard"
+    >
+      <template v-slot:header>
+        This is a new modal header.
+      </template>
+
+      <template v-slot:body>
+        This is a new modal body.
+      </template>
+
+      <template v-slot:footer>
+        This is a new modal footer.
+      </template>
+    </ModalTest>
+  </Transition>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import HelloWorld from '@/components/ModalTest.vue'; // @ is an alias to /src
 import { useStore } from '@/store/store';
-import router from "@/router"; // Importez le store
+import router from "@/router";
+import ModalTest from "@/components/ModalTest.vue"; // Importez le store
 
 const store = useStore(); // Utilisez la fonction useSt
 let ticket=ref("")
@@ -109,16 +138,26 @@ async function tirage() {
     id = null
   }
   await store.tirage({numero: ticket.value, idUser: id})
-  console.log("this.responseOfticket", store.responseOfticket)
 }
 
+
+const isModalVisible = ref<boolean>(false);
+
+function openModal() {
+  store.isModalVisible = true;
+}
+
+function closeModal() {
+  store.isModalVisible = false;
+}
 function deconnecter(){
   localStorage.removeItem('user');
 }
+
 </script>
 <style scoped>
 .bodyclasse {
-  background-image: url('../assets/back_home.jpg');
+  background-image: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=pexels-pixabay-531880.jpg&fm=jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,11 +185,11 @@ function deconnecter(){
 }
 
 .navbar-custom {
-  background-color: #ffffff;
+  background-color: #333;
 }
 /* Personnaliser la couleur du texte dans la navbar */
 .navbar-custom .navbar-nav .nav-link {
-  color: rgb(13, 66, 34);
+  color: white;
 }
 
 .modal-content {
