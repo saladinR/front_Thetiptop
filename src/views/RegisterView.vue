@@ -110,7 +110,7 @@ else   passworderropr.value = true
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('https://wallpaperaccess.com/full/51367.jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
+  background-image: url('../assets/ain.jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
 
 
 }
