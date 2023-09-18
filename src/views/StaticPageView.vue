@@ -100,4 +100,11 @@ p {
   color: #666;
   line-height: 1.6;
 }
+.navbar-custom {
+  background-color: #ffffff;
+}
+/* Personnaliser la couleur du texte dans la navbar */
+.navbar-custom .navbar-nav .nav-link {
+  color: rgb(1, 41, 4);
+}
 </style>

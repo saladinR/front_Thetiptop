@@ -108,17 +108,17 @@ async function send() {
 <style scoped>
 
 .navbar-custom {
-  background-color: #333;
+  background-color: #ffffff;
 }
 /* Personnaliser la couleur du texte dans la navbar */
 .navbar-custom .navbar-nav .nav-link {
-  color: white;
+  color: rgb(1, 41, 4);
 }
 body {
   height: 728px;
   margin: 0;
   padding: 0;
-  background-image: url('https://img.freepik.com/photos-gratuite/hot-line-contactez-nous-centre-appels-interface-recherche_53876-124009.jpg?w=2000'); /* Remplacez 'votre-image.jpg' par le chemin de votre image de fond */
+  background-image: url('../assets/background_home.jpg'); /* Remplacez 'votre-image.jpg' par le chemin de votre image de fond */
   background-size: cover;
   background-position: center;
   font-family: Arial, sans-serif;

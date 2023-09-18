@@ -126,11 +126,11 @@ body {
 }
 
 .navbar-custom {
-  background-color: #333;
+  background-color: #ffffff;
 }
 /* Personnaliser la couleur du texte dans la navbar */
 .navbar-custom .navbar-nav .nav-link {
-  color: white;
+  color: rgb(1, 41, 4);
 }
 .card {
   margin-top: 20px;

@@ -157,12 +157,13 @@ function deconnecter(){
 </script>
 <style scoped>
 .bodyclasse {
-  background-image: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=pexels-pixabay-531880.jpg&fm=jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
+  background-image: url('../assets/gift.jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  background-size: cover;
 }
 /* Ajouter un espacement autour du champ de saisie */
 .input-container {
@@ -185,11 +186,11 @@ function deconnecter(){
 }
 
 .navbar-custom {
-  background-color: #333;
+  background-color: #ffffff;
 }
 /* Personnaliser la couleur du texte dans la navbar */
 .navbar-custom .navbar-nav .nav-link {
-  color: white;
+  color: rgb(1, 41, 4);
 }
 
 .modal-content {

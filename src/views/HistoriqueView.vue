@@ -111,7 +111,7 @@ body {
 
 /* Partie supérieure avec image de fond */
 .top-section {
-  background-image: url('https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTV8fGJhY2tncm91bmQlMjBpbWFnZXxlbnwwfHx8fDE2OTI2NDA3NTJ8MA&ixlib=rb-4.0.3&q=85'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
+  background-image: url('../assets/contact.jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -125,11 +125,11 @@ body {
 }
 
 .navbar-custom {
-  background-color: #333;
+  background-color: #ffffff;
 }
 /* Personnaliser la couleur du texte dans la navbar */
 .navbar-custom .navbar-nav .nav-link {
-  color: white;
+  color: rgb(1, 41, 4);
 }
 
 .center{

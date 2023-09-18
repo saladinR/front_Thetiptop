@@ -18,7 +18,7 @@
         </div>
       </button>
       <div class="signup-link">
-        <button class="facebook-button" style="background-color: #333333 !important;">
+        <button class="facebook-button" style="background-color: #3c7431 !important;">
           <a href="register" style="padding-left: 80px ;color: white">S'inscrire</a>
 
         </button>
@@ -151,7 +151,7 @@ async function connecte() {
 .login-image {
   flex: 1;
   background-size: cover;
-  background-image: url('https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?cs=srgb&dl=pexels-craig-adderley-1563356.jpg&fm=jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
+  background-image: url('../assets/login_app.jpg'); /* Remplacez 'lien_de_votre_image.jpg' par le chemin de votre image */
   background-position: center;
 }
 
