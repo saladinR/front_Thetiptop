@@ -193,7 +193,7 @@ async function connecte() {
 .login-form button {
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: rgb(82, 155, 82);
+  background-color: rgb(120, 173, 120);
   color: white;
   border: none;
   border-radius: 4px;
