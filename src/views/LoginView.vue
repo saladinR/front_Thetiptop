@@ -19,7 +19,7 @@
       </button>
       <div class="signup-link">
         <button class="facebook-button" style="background-color: #b2861e !important;">
-          <a href="register" style="padding-left: 80px ;color: white">S'inscrire</a>
+          <a href="register" style="padding-left: 80px ;color: white"> S'inscrire</a>
 
         </button>
       </div>
